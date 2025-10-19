@@ -4,44 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Charity Water Landing Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- Load Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font family for a clean look, mirroring the design's sans-serif style -->
+    <style>
+        body {
+            /* Prefer Proxima Nova for all text; fall back to Inter and generic sans-serif */
+            font-family: 'Proxima Nova', 'Inter', sans-serif;
+            /* Apply the light, creamy yellow background */
+            background-color: #FFF8E1;
+            /* Default body text color */
+            color: #1a1a1a;
+        }
+      /* Simple hero text color */
+        .hero-text {
+            color: #003366;
+        }
+
+        /* Smooth, GPU-accelerated hero image effect */
+        .hero-image-effect {
+            /* Hint to use the compositor thread for smooth transforms */
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            will-change: transform, box-shadow;
+            /* Transition both transform and box-shadow with a gentle easing */
+            transition: transform 350ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 350ms cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .hero-image-effect:hover {
+            /* Slight upward lift and subtle scale using 3D translate for GPU compositing */
+            transform: translate3d(0, -10px, 0) scale(1.02);
+            /* Increased shadow for depth (subtle and smooth) */
+            box-shadow: 0 22px 30px -8px rgba(0, 0, 0, 0.18), 0 12px 12px -6px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Respect users who prefer reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .hero-image-effect {
+                transition: none;
+            }
+        }
+
+        /* Call-to-action button style using the requested yellow */
+        .cta-button {
+            background-color: #ffc907;
+            color: #1a1a1a; /* ensures readable dark text on the bright button */
+            border: none;
+        }
+
+        .cta-button:hover {
+            /* Slightly darker on hover for feedback */
+            background-color: #e6b500;
+        }
+    </style>
 </head>
 <body>
-    <!-- Hero Section: This is the main banner at the top of the page -->
-    <section class="hero">
-        <!-- Main headline -->
-        <h1>Clean Water for Everyone</h1>
-        <!-- Subheadline -->
-        <p>Join us in bringing safe, clean water to communities in need.</p>
-    </section>
 
-    <!-- Story Section: This tells the story of the nonprofit -->
-    <section class="story">
-        <h2>Our Story</h2>
-        <p>
-         
-    </section>
+    <!-- Main Container: Limits the overall width and centers content for desktop viewing -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <!-- Real-World Impact Story Section -->
-    <section class="impact-story">
-        <!-- Section headline -->
-        <h2>Real Impact: Meet Amina</h2>
-        <!-- Container for image and text -->
-        <div class="impact-content">
-            <!-- Impact image -->
-            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Amina smiling with clean water" class="impact-image">
-            <!-- Impact story text -->
-            <p>
-                Amina used to walk miles every day to collect water for her family. Thanks to your support, her village now has a clean water well. Amina can go to school and her family is healthier and happier.
-            </p>
-        </div>
-    </section>
+        <!-- 1. HEADER / LOGO BAR -->
+        <header class="py-8 flex items-center">
+            <!-- Logo area: Use provided logo directly, larger and horizontal -->
+            <div class="flex items-center space-x-4">
+                <a href="#" aria-label="Charity Water homepage">
+                    <img src="CharityWaterLogo.png" alt="charity: water wordmark with a blue water droplet logo, representing hope and clean water" class="h-15 sm:h-10 w-auto">
+                </a>
+            </div>
+        </header>
 
-    <!-- Call-to-Action Section: This encourages visitors to take action -->
-    <section class="call-to-action">
-        <h2>Make a Difference</h2>
-        <p>Your support can help save lives. Every donation brings us closer to a world with clean water for all.</p>
-        <a href="#" class="donate-button">Donate Now</a>
-    </section>
+        <!-- 2. HERO SECTION -->
+        <!-- Responsive Two-Column Layout -->
+        <main class="lg:flex lg:items-center lg:space-x-12 py-12 lg:py-20">
+
+            <!-- LEFT COLUMN: Messaging and CTA -->
+            <div class="lg:w-1/2 mb-10 lg:mb-0">
+                
+                <!-- Headline: Uses two colors for visual emphasis -->
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900 mb-6">
+                    <span class="hero-text">Build a World Where <br class="hidden sm:inline">Everyone Has</span>
+                    <span class="text-cyan-700 opacity-80 block sm:inline">Clean Water</span>
+                </h1>
+
+                <!-- Body Text -->
+                <p class="text-xl text-gray-700 mb-10 max-w-lg">
+                    Donate with confidence and join a global community of change-makers. 100% of your donations fund sustainable clean water projects with real proof of impact through photos, GPS updates, and stories from the communities you help transform.
+                </p>
+
+                <!-- Call-to-Action Button -->
+                <button class="cta-button text-lg font-bold py-4 px-10 rounded-xl shadow-xl transition duration-300 transform hover:scale-[1.02]">
+                    Join the Movement
+                </button>
+            </div>
+
+            <!-- RIGHT COLUMN: Image Area -->
+            <div class="lg:w-1/2 flex justify-center lg:justify-end">
+                <!-- Placeholder Image - Replace this URL with your actual image -->
+                <img
+                    src="CharityWaterimage.jpg"
+                    alt="Community members happily collecting water from a new source."
+                    class="w-full max-w-md lg:max-w-lg h-auto object-cover rounded-xl shadow-2xl hero-image-effect"
+                    onerror="this.onerror=null;this.src='charity-water-placeholder.jpg';"
+                >
+            </div>
+
+        </main>
+
+    </div>
 </body>
 </html>
