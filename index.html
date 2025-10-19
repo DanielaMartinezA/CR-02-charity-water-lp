@@ -68,7 +68,12 @@
             <!-- Logo area: Use provided logo directly, larger and horizontal -->
             <div class="flex items-center space-x-4">
                 <a href="#" aria-label="Charity Water homepage">
-                    <img src="CharityWaterLogo.png" alt="charity: water wordmark with a blue water droplet logo, representing hope and clean water" class="h-15 sm:h-10 w-auto">
+                    <picture>
+                        <!-- Primary provided logo -->
+                        <source srcset="img/CharityWaterLogo.png" type="image/png">
+                        <!-- Fallbacks: cw_logo.png, then cw_logo-2.png if available -->
+                        <img src="img/cw_logo.png" alt="charity: water logo" class="h-12 sm:h-10 w-auto block" onerror="this.onerror=null;this.src='img/cw_logo-2.png';">
+                    </picture>
                 </a>
             </div>
         </header>
@@ -101,7 +106,7 @@
             <div class="lg:w-1/2 flex justify-center lg:justify-end">
                 <!-- Placeholder Image - Replace this URL with your actual image -->
                 <img
-                    src="CharityWaterimage.jpg"
+                    src="img/CharityWaterimage.jpg"
                     alt="Community members happily collecting water from a new source."
                     class="w-full max-w-md lg:max-w-lg h-auto object-cover rounded-xl shadow-2xl hero-image-effect"
                     onerror="this.onerror=null;this.src='charity-water-placeholder.jpg';"
